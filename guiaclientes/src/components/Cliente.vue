@@ -1,7 +1,7 @@
 <template>
     <div id="cliente-descricao">
-        <h2 class="cliente-nome">Cliente aqui!</h2>
-        <h3>Descrição do cliente: Bla Bla Bla</h3>
+        <h2 class="cliente-nome">{{ nome }}</h2>
+        <h3>Descrição do cliente: {{ descricao }}</h3>
         <Produto/>
     </div>
 
@@ -11,6 +11,15 @@
 import Produto from './Produto.vue'
 
 export default {
+    data() {
+        return {
+            nome: "Gustavo",
+            numero: "2346-25234",
+            email: "gustavo@gustavo.com",
+            idade: 19,
+            descricao: "Lorem ipsum dolor sit amet"
+        }
+    },
     name: 'Cliente',
     components: {
         Produto
@@ -24,7 +33,6 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #2cafc1;
         background-color: #f2f2f2;
     }
 
