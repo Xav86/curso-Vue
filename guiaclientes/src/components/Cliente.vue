@@ -1,5 +1,8 @@
 <template>
     <div id="cliente-descricao">
+        <input type="text" v-model="nome">
+        <input type="email" :value="email">
+        <hr>
         <h2 class="cliente-nome">{{ nome }}</h2>
         <h3>Descrição do cliente: {{ descricao }}</h3>
         <Produto/>
