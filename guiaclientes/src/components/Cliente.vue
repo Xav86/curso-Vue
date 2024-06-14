@@ -1,10 +1,10 @@
 <template>
     <div id="cliente-descricao">
-        <input type="text" v-model="nome">
-        <input type="email" :value="email">
+        
+        <h4>Nome: {{ cliente.nome }}</h4>
         <hr>
-        <h2 class="cliente-nome">{{ nome }}</h2>
-        <h3>Descrição do cliente: {{ descricao }}</h3>
+        <p>Email: {{ cliente.email }}</p>
+        <p>Idade: {{ cliente.idade }}</p>
         <Produto/>
     </div>
 
@@ -16,16 +16,16 @@ import Produto from './Produto.vue'
 export default {
     data() {
         return {
-            nome: "Gustavo",
             numero: "2346-25234",
-            email: "gustavo@gustavo.com",
-            idade: 19,
             descricao: "Lorem ipsum dolor sit amet"
         }
     },
     name: 'Cliente',
     components: {
         Produto
+    },
+    props: {
+        cliente: Object
     }
 }
 </script>
