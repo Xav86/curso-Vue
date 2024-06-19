@@ -4,7 +4,8 @@
     <input type="text" v-model="clienteUsuario.email">
     <!-- <input type="text" v-model="nomeUsuario"> -->
     <!-- <Cliente :nome="nomeUsuario" email="gustavo@gustavo.com" idade="19"/> -->
-    <Cliente :cliente="clienteUsuario"/>
+    <Cliente :cliente="clienteUsuario" :showIdade="true"/>
+    <Cliente :cliente="clienteUsuario" :showIdade="false"/>
   </div>
 </template>
 

@@ -1,10 +1,14 @@
 <template>
-    <div id="cliente-descricao">
+    <div :class="{'cliente-descricao': !isPremium, 'cliente-premium': isPremium}">
         
         <h4>Nome: {{ cliente.nome }}</h4>
         <hr>
         <p>Email: {{ cliente.email }}</p>
-        <p>Idade: {{ cliente.idade }}</p>
+        <p v-if="showIdade === true">Idade: {{ cliente.idade }}</p>
+        <p v-else>O usuário não quis mostrar a idade </p>
+        <!-- <p v-show="showIdade === true">Idade: {{ cliente.idade }}</p> -->
+        <!-- <p v-if="showIdade === true">Idade: {{ cliente.idade }}</p> 
+        <p v-else-if="showIdade === false">Idade: {{ cliente.idade }}</p> -->
         <Produto/>
     </div>
 
@@ -17,7 +21,8 @@ export default {
     data() {
         return {
             numero: "2346-25234",
-            descricao: "Lorem ipsum dolor sit amet"
+            descricao: "Lorem ipsum dolor sit amet",
+            isPremium: false
         }
     },
     name: 'Cliente',
@@ -25,13 +30,14 @@ export default {
         Produto
     },
     props: {
-        cliente: Object
+        cliente: Object,
+        showIdade: Boolean
     }
 }
 </script>
 
 <style scoped>
-    #cliente-descricao {
+    .cliente-descricao {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -41,5 +47,14 @@ export default {
 
     .cliente-nome {
         color: #2c2ca0;
+    }
+
+    .cliente-premium {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #ffee00;
+        background-color: #0f0f0f;
     }
 </style>
