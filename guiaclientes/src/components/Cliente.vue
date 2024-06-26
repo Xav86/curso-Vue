@@ -11,6 +11,7 @@
         <p v-else-if="showIdade === false">Idade: {{ cliente.idade }}</p> -->
         <button @click="mudarCor($event)">Mudar cor!</button>
         <button @click="emitirEventoDelete">Deletar</button>
+        <h4>idEspecial: {{ idEspecial }}</h4>
         <Produto/>
     </div>
 
@@ -55,7 +56,10 @@ export default {
         tudoMaiusculo: function() {
         return this.cliente.email.toUpperCase();
         },
-    }
+        idEspecial: function() {
+            return (this.cliente.email + this.cliente.nome + this.cliente.id).toUpperCase();
+        }
+    },
 }
 
 </script>
