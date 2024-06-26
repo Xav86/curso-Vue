@@ -3,13 +3,17 @@
     <!-- <input type="text" v-model="nomeUsuario"> -->
     <!-- <Cliente :nome="nomeUsuario" email="gustavo@gustavo.com" idade="19"/> -->
     <h3>Cadastro: </h3>
+      <div class="buttons">
+        <button class="button is-primary">Primary</button>
+        <button class="button is-link">Link</button>
+      </div>
       <input type="text" placeholder="nome" v-model="nomeField"> <br>
       <input type="email" placeholder="email" v-model="emailField"> <br>
       <input type="number" placeholder="idade" v-model="idadeField"> <br>
       <small id="nomeErro" v-show="deuErro">Erro ao cadastrar, preencha os campos corretamente</small> <br>
       <button @click="cadastrarUsuario">Cadastar</button>
     <hr>
-    <div v-for="(cliente, index) in clientes" :key="cliente.id">
+    <div v-for="(cliente, index) in orderClientes" :key="cliente.id">
       <h3>{{ index + 1 }}</h3>
       <Cliente :cliente="cliente" :showIdade="true" @meDelete="deletarUsuario($event)"/> 
     </div>
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import Cliente from './components/Cliente.vue';
 
 export default {
@@ -36,16 +41,16 @@ export default {
           idade: 124
         },
         {
-          id: 4,
-          nome: "Cliente2",
-          email: "Cliente2@Cliente2.com",
-          idade: 49
-        },
-        {
           id: 34587,
           nome: "Cliente3",
           email: "Cliente3@Cliente3.com",
           idade: 91
+        },
+        {
+          id: 4,
+          nome: "Cliente2",
+          email: "Cliente2@Cliente2.com",
+          idade: 49
         },
         {
           id: 3,
@@ -89,8 +94,14 @@ export default {
       var novoArray = this.clientes.filter(cliente => cliente.id != id);
       this.clientes = novoArray;
     }
+  },
+  computed: {
+    orderClientes: function() {
+      return _.orderBy(this.clientes, ['nome'],['asc'])
+    }
   }
 }
+
 </script>
 
 <style>
