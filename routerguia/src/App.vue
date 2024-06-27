@@ -3,7 +3,8 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/teste">Teste</router-link> |
-    <router-link  :to="{ name: 'cadastro', params: {numero: 'Gustavo'}}">Cadastro</router-link>
+    <router-link  to="/cadastro">Cadastro</router-link>
+    <!-- <router-link  :to="{ name: 'cadastro', params: {numero: 'Gustavo'}}">Cadastro</router-link> -->
   </nav>
   <router-view/>
 </template>

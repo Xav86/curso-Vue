@@ -21,9 +21,16 @@ const routes = [
     component: TesteView
   },
   {
-    path: '/cadastro/:numero',
+    path: '/cadastro',
     name: 'cadastro',
-    component: CadastroView
+    component: CadastroView,
+    children: [
+      {
+        path: 'gustavo',
+        name: 'gustavo',
+        component: AboutView
+      }
+    ]
   }
 ]
 
