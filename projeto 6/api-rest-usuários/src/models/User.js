@@ -11,7 +11,7 @@ class User {
         try {
             const hash = await bcrypt.hash(password, 10);
 
-            await knexInstance.insert({name, email, password: hash, role: 0}).into('users');
+            await knexInstance.insert({name: name, email: email, password: hash, role: 0}).into('users');
             return;
         } catch(err) {
             console.log('Erro ao cadastrar usuário! ',err);

@@ -16,8 +16,8 @@ class UserController {
     async create(req, res) {
         const { name, email, password } =  req.body;
 
-        if(!email || !name || !password || email === undefined || name === undefined || password === undefined || email === null || password === null){
-            res.status(400).send('no');
+        if(!email || !name || !password || email === undefined || name === undefined || password === undefined || email === null || password === null || password === '' || email === '' || password === '' || password === ' ' || email === ' ' || password === ' '){
+            res.status(400).send('Verifique as credenciais e tente novamente');
             return;
         } else {
 
@@ -28,6 +28,7 @@ class UserController {
             }
 
             await User.create(name, email, password);
+
             res.status(200).send('Usuario criado!');
         }
 

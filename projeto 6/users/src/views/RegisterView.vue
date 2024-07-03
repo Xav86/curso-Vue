@@ -5,6 +5,11 @@
                 <h2 class="card-header-title is-size-2">Registro de usuário:</h2>
             </div>
             <div class="card-content">
+                <div v-if="error != undefined">
+                    <div class="notification is-danger  is-light">
+                    <p>{{ error }}</p>
+                    </div>
+                </div>
                 <label for="">Nome</label>
                 <input class="input" type="text" placeholder="Nome do usuáiro" v-model="name" />
                 <label for="">Email</label>
@@ -20,19 +25,40 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            error: undefined,
         }
     },
     methods: {
         register() {
-            console.log(this.name);
-            console.log(this.email);
-            console.log(this.password);
+            axios.post('http://localhost:8686/user', {
+                name: this.name,
+                email: this.email,
+                password: this.password
+            }).then(res => {
+                console.log(res);
+                alert('Cadastro efetuado com sucesso!');
+                this.$router.push({name: 'home'});
+            }).catch(err => {
+                let msgErro = err.response.data;
+                console.log(msgErro);
+                if(!msgErro) {
+                    this.error = 'Error X('
+                } else {
+                    this.error = msgErro;
+                }
+
+            });
+            // console.log(this.name);
+            // console.log(this.email);
+            // console.log(this.password);
         }
 
     }
