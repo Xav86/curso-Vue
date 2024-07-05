@@ -22,7 +22,7 @@ module.exports = function(req, res, next) {
                 return;
             }
             
-            console.log(decoded);
+            // console.log(decoded);
         } catch(err) {
             res.status(403).send('Necessário realizar autenticação');
             return;

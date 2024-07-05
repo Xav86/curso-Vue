@@ -4,8 +4,8 @@ class HomeController{
         res.send("Servidor rodando!");
     }
 
-    async validate(res, req) {
-        res.send('okay');
+    async validate(req, res) {
+        res.status(200).send('okay');
     }
 
 }
