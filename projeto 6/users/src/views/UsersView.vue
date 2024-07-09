@@ -17,7 +17,7 @@
                         <td>{{user.email}}</td>
                         <td>{{processRole(user.role)}}</td>
                         <td class="space-button">
-                            <button class="button is-primary">Editar</button>
+                            <router-link :to="{name: 'Edit', params:{id: user.ID}}"><button class="button is-primary">Editar</button></router-link>
                             <button class="button is-danger" @click="showhideModal(user.ID)">Deletar</button>
                         </td>
                     </tr>

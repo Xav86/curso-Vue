@@ -16,7 +16,7 @@
                 <input class="input" type="email" placeholder="email@email.com" v-model="email" />
             </div>
             <div class="card-footer p-3 is-end">
-                <button class="button is-success card-footer-item" @click="register">Editar</button>
+                <button class="button is-success card-footer-item" @click="update">Editar</button>
             </div>
         </div>
     </div>
@@ -56,17 +56,25 @@ export default {
         }
     },
     methods: {
-        register() {
-            axios.post('http://localhost:8686/user', {
+        update() {
+
+            const req = {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }
+
+            axios.put('http://localhost:8686/user', {
                 name: this.name,
                 email: this.email,
-            }).then(res => {
+                id: this.id
+            }, req).then(res => {
                 console.log(res);
-                alert('Cadastro efetuado com sucesso!');
-                this.$router.push({name: 'home'});
+                alert('Edição efetuado com sucesso!');
+                this.$router.push({name: 'Users'});
             }).catch(err => {
                 let msgErro = err.response.data;
-                console.log(msgErro);
+                    console.log(msgErro);
                 if(!msgErro) {
                     this.error = 'Error X('
                 } else {
